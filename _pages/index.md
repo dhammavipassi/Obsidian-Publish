@@ -5,8 +5,6 @@ id: home
 permalink: /
 ---
 
-## Dhammavipassi の数字花园🌱
-
 
 
 
