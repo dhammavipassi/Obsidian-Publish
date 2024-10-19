@@ -1,4 +1,4 @@
-name: Deploy Jekyll site to Pages
+name: Build and Deploy Jekyll Site
 
 on:
   push:
@@ -9,10 +9,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -27,9 +23,22 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Install dependencies
+      - name: Install Ruby dependencies
         run: |
           bundle install
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate notes_graph.json
+        run: |
+          python scripts/generate_notes_graph.py
 
       - name: Build with Jekyll
         run: bundle exec jekyll build
