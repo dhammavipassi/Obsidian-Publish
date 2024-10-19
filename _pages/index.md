@@ -5,14 +5,40 @@ id: home
 permalink: /
 ---
 
+## Dhammavipassi の数字花园🌱
 
-<strong>Recently updated notes</strong>
+
+
+
+![202208211431065.svg](https://img2.oldwinter.top/202208211431065.svg)
+
+
+
+
+## Recently updated notes
+
+---
+
+
+<strong>🆕 最近创建：</strong>
 
 <ul>
-  {% assign recent_notes = site.notes | sort: "last_modified_at_timestamp" | reverse %}
-  {% for note in recent_notes limit: 5 %}
+  {% assign recent_notes = site.notes | sort: "date created" | reverse %}
+  {% for note in recent_notes limit: 6 %}
     <li>
-      {{ note.last_modified_at | date: "%Y-%m-%d" }} — <a class="internal-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a>
+      {{ note['date created'] }} — <a class="internal-link" href=" {{ note.url }} "> {{ note.title }} </a>
+    </li>
+  {% endfor %}
+</ul>
+
+
+<strong>⏰ 最近更新：</strong>
+
+<ul>
+  {% assign recent_notes = site.notes | sort: "date modified" | reverse %}
+  {% for note in recent_notes limit: 6 %}
+    <li>
+      {{ note['date modified'] }} — <a class="internal-link" href=" {{ note.url }} "> {{ note.title }} </a>
     </li>
   {% endfor %}
 </ul>
