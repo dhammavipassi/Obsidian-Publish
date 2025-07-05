@@ -19,46 +19,48 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Checkout
+    - name: 📥 Checkout
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
     
-    - name: Setup Ruby
+    - name: 💎 Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
         bundler-cache: true
     
-    - name: Setup Python
+    - name: 🐍 Setup Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
     
-    - name: Install Python dependencies
+    - name: 📦 Install Python dependencies
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then
           pip install -r requirements.txt
         fi
     
-    - name: Generate notes graph
+    - name: 🔗 Generate notes graph
       run: |
         if [ -f scripts/generate_notes_graph.py ]; then
           python scripts/generate_notes_graph.py
         fi
     
-    - name: Setup Pages
-      uses: actions/configure-pages@v5
+    - name: ⚙️ Setup Pages
+      uses: actions/configure-pages@v4
     
-    - name: Build Jekyll site
+    - name: 🏗️ Build Jekyll site
       run: |
         bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
       env:
         JEKYLL_ENV: production
     
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v4
+    - name: 📤 Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./_site
 
   deploy:
     environment:
