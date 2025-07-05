@@ -1,3 +1,38 @@
 [build]
-  command = "jekyll build --trace"
+  command = "pip install -r requirements.txt && python scripts/generate_notes_graph.py && bundle exec jekyll build"
   publish = "_site"
+  
+[build.environment]
+  JEKYLL_ENV = "production"
+  RUBY_VERSION = "3.2.0"
+
+# 处理SPA路由和404页面
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# 安全头设置
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# 缓存设置
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
