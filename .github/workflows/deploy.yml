@@ -1,10 +1,8 @@
-name: Deploy to GitHub Pages and Netlify
+name: 🚀 Deploy Digital Garden
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -68,8 +66,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
