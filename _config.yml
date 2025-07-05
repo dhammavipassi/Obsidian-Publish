@@ -6,7 +6,7 @@ baseurl:             '/Obsidian-Publish'
 
 # If you are using a host that cannot resolve URLs that do
 # not end with .html (such as Neocities), set this to 'true'.
-use_html_extension:  false
+use_html_extension:  true
 
 # Set to `true` to open non-internal links in new tabs, or
 # set to `false` to open non-internal links in current tab.
@@ -23,6 +23,9 @@ relative_permalinks: false
 plugins:
   - jekyll-last-modified-at
 
+# 处理中文URL
+encoding: utf-8
+
 sass:
   sass_dir:          _sass
   style:            :compressed
@@ -30,7 +33,7 @@ sass:
 collections:
   notes:
     output: true
-    permalink: /:slug
+    permalink: /:name.html
 
 defaults:
   - scope:

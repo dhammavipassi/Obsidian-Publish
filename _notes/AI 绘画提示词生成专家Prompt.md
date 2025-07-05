@@ -1,5 +1,5 @@
 ---
-title: "Role:AI 绘画提示词生成专家"
+title: "AI 绘画提示词生成专家Prompt"
 date: 2025-07-05T22:32:01.864880
 layout: note
 ---
