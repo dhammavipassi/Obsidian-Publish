@@ -1,5 +1,6 @@
 ---
-title: "AI 绘画提示词生成专家Prompt"
+title: "AI 绘画提示词生成专家"
+slug: ai-drawing-prompt-expert
 date: 2025-07-05T22:32:01.864880
 layout: note
 ---
