@@ -30,7 +30,7 @@ sass:
 collections:
   notes:
     output: true
-    permalink: /Obsidian-Publish/:slug
+    permalink: /:slug
 
 defaults:
   - scope:
